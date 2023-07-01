@@ -1,4 +1,8 @@
 <?php
+include("include/database/db.php");
+?>
+
+<?php
 include("include/header.php");
 ?>
 
