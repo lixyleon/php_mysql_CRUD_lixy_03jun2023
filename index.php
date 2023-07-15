@@ -41,7 +41,53 @@ include("include/header.php");
 
         </div>
         <div class="col-md-8">
-            
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            Title
+                        </th>
+                        <th class="text-center">
+                            Description
+                        </th>
+                        <th class="text-center">
+                            Created At
+                        </th>
+                        <th class="text-center">
+                            Image
+                        </th>
+                        <th colspan="2" class="text-center">
+                            Accion
+                        </th>
+                    </tr>
+                    <tbody>
+                       <?php $query = "SELECT * FROM task"; 
+                       $result_task = mysqli_query($conn,$query);
+                       while($row = mysqli_fetch_assoc($result_task)){
+                        ?>
+                        <tr>
+                            <td><?=$row['title'] ?> </td>
+                            <td><?=$row['description'] ?> </td>
+                            <td><?=$row['create_at'] ?> </td>
+                            <td class="resize-image d-flex"> <img src="image.php?id=<?=$row['id'] ?>" alt="" class="w-100"> </td>
+                            <td>
+                                <a href="edit.php?id=<?=$row['id'] ?>" class="btn btn-secondary rounded-circle"> 
+                                <i class="bi bi-pencil-square "></i>
+                            </a>
+                            </td>
+                            <td>
+                                <a href="delete_task.php?id=<?=$row['id'] ?>" class="btn btn-danger rounded-circle"> 
+                                <i class="bi bi-trash"></i>
+                            </a>
+                            </td>
+                        </tr>
+                        
+                        <?php
+                       }
+                       ?>
+                    </tbody>
+                </thead>
+            </table>
         </div>
     </div>
 
